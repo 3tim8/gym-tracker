@@ -1,0 +1,217 @@
+/* ==========================================================================
+   FARB-DEFINITIONEN (Hier kannst du die Farben jederzeit ändern!)
+   ========================================================================== */
+:root {
+    --bg-main: #121212;          /* Sehr dunkler Hintergrund für die ganze Seite */
+    --bg-card: #2a2828;          /* Etwas helleres Dunkelgrau für Kacheln & Modal */
+    --bg-input: #2a2a2a;         /* Hintergrund für Eingabefelder und Dropdowns */
+    
+    --text-main: #ffffff;        /* Hauptschreibfarbe (Weiß) */
+    --text-muted: #a0a0a0;       /* Für kleinere oder unwichtigere Texte (Grau) */
+    
+    --accent-blue: #3498db;      /* Blau für Muskel-Badges und Verlauf-Streifen */
+    --accent-orange: #f39c12;    /* Orange für die "Letztes Training vor X Tagen"-Schrift */
+    --accent-green: #2ecc71;     /* Grün für den Speicher-Button */
+    --accent-green-hover: #27ae60; /* Dunkleres Grün beim Drüberfahren mit der Maus */
+    
+    --border-color: #333333;     /* Rahmenfarbe für Eingabefelder */
+}
+
+/* ==========================================================================
+   LAYOUT & DESIGN (Nutzt die Variablen von oben)
+   ========================================================================== */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    margin: 0;
+    padding: 20px;
+    color: var(--text-main);
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-main);
+}
+
+/* Das Grid-System für die Gerätekacheln */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+/* Design der einzelnen Gerätekacheln */
+.card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.card p {
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.card img {
+    max-width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    opacity: 0.9; /* Leicht abgedunkelt, damit es im Dark Mode angenehmer ist */
+}
+
+.badge {
+    display: inline-block;
+    background-color: var(--accent-blue);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+/* Das Detail-Fenster (Modal) Hintergrund */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dunklerer Overlay-Hintergrund */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Der Kasten im Modal */
+.modal-content {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.modal-content h2, .modal-content h3 {
+    color: var(--text-main);
+}
+
+#modal-meta {
+    color: var(--text-muted);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.8rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.close-btn:hover {
+    color: var(--text-main);
+}
+
+.days-ago {
+    display: block;
+    margin: 10px 0 20px 0;
+    color: var(--accent-orange);
+    font-weight: bold;
+}
+
+/* Formular-Gruppen */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* Eingabefelder UND das neue Auswahlfeld (Select) im Dark Mode */
+.form-group input[type="number"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: var(--bg-input);
+    color: var(--text-main);
+}
+
+/* Spezielles Grid für die 3 Sätze nebeneinander */
+.sets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.sets-grid div {
+    text-align: center;
+}
+
+.sets-grid label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Speicher-Button */
+.save {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-green);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.save:hover {
+    background-color: var(--accent-green-hover);
+}
+
+/* Historie / Letzte Aktivitäten */
+.history-list {
+    margin-top: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.history-item {
+    background-color: var(--bg-input);
+    border-left: 4px solid var(--accent-blue);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
